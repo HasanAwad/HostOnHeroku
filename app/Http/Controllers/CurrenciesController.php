@@ -44,16 +44,16 @@ public function store(Request $request)
 {
 
 
-    $this->validate($request, [
-        'code' => 'required',
-        'country' => 'required',
-        'name' => 'required',
-        'symbol
-        ' => 'required',
+    // $this->validate($request, [
+    //     'code' => 'required',
+    //     'country' => 'required',
+    //     'name' => 'required',
+    //     'symbol
+    //     ' => 'required',
 
 
 
-    ]);
+    // ]);
 
     $currencies = new Currencies();
     $currencies->code = $request->code;
