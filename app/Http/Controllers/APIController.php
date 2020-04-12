@@ -80,9 +80,16 @@ public function login(Request $request)
             return $this->login($request);
         }
 
+    try{
         return response()->json([
             'success'   =>  true,
             'data'      =>  $user
         ], 200);
+     }catch (\Throwable $th) {
+        return response()->json([
+            'success'   =>  false
+        ], 500);
+
+    }
     }
 }

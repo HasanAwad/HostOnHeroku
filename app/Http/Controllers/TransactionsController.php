@@ -71,6 +71,8 @@ public function index()
         if($transaction->type != 'goal' && $transaction->interval === null){
             $transaction->start_date = $request->start_date;
             $transaction->end_date = null;
+            $transaction->interval = null;
+
         }
         elseif($transaction->type != 'goal' && $transaction->interval !=null ){
             $transaction->start_date = $request->start_date;
@@ -78,7 +80,7 @@ public function index()
         }
         else{
             if($transaction->type === 'goal'){
-                $transaction->interval = null;
+
             }
         }
 
