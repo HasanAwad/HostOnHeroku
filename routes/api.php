@@ -24,6 +24,7 @@ Route::get('currencie_all', 'CurrenciesController@index');
 Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('logout', 'APIController@logout');
     Route::get('currencie','CurrenciesController@show');
+    Route::post('currencie','CurrenciesController@store');
     //get transactions for specific user
     Route::get('transactions', 'TransactionsController@index');
     //add new transactions

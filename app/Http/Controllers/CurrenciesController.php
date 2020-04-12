@@ -48,7 +48,54 @@ public function show()
     return $currencies;
 }
 
+/**
+ * @param Request $request
+ * @return \Illuminate\Http\JsonResponse
+ * @throws \Illuminate\Validation\ValidationException
+ */
+public function store(Request $request)
+{
 
+
+    $this->validate($request, [
+        'code' => 'required',
+        'country' => 'required',
+        'name' => 'required',
+        'symbol
+        ' => 'required',
+
+
+
+    ]);
+
+    $currencies = new Currencies();
+    $currencies->code = $request->code;
+    $currencies->country = $request->country;
+    $currencies->name = $request->name;
+    $currencies->symbol = $request->symbol;
+
+    //if(!Categories::where('name', $category->name )->exists()){
+
+    if ($currencies->save())
+        return response()->json([
+            'success' => true,
+            'currencies' => $currencies
+        ],200);
+
+
+    else
+        return response()->json([
+            'success' => false,
+            'message' => 'Sorry, task could not be added.'
+        ], 500);
+    // }else{
+    //     return response()->json([
+    //         'success' => false,
+    //         'message' => 'Sorry, already exist'
+    //     ], 500);
+    // }
+
+}
 
 
 
