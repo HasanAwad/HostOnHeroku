@@ -20,11 +20,12 @@ Route::post('login', 'APIController@login');
 Route::post('register', 'APIController@register');
 //get all Currencies no need for user auth anyone can access this route
 Route::get('currencie_all', 'CurrenciesController@index');
+Route::post('currencie','CurrenciesController@store');
 
 Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('logout', 'APIController@logout');
     Route::get('currencie','CurrenciesController@show');
-    Route::post('currencie','CurrenciesController@store');
+
     //get transactions for specific user
     Route::get('transactions', 'TransactionsController@index');
     //add new transactions

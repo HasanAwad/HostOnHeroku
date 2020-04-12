@@ -35,19 +35,6 @@ public function index()
     return $currencies;
 }
 
-public function show()
-{
-    try{
-        $this->user = JWTAuth::parseToken()->authenticate();
-
-     } catch(Exception $error){
-
-    }
-
-    $currencies = $this->user->currencies()->get();
-    return $currencies;
-}
-
 /**
  * @param Request $request
  * @return \Illuminate\Http\JsonResponse
@@ -96,6 +83,20 @@ public function store(Request $request)
     // }
 
 }
+
+public function show()
+{
+    try{
+        $this->user = JWTAuth::parseToken()->authenticate();
+
+     } catch(Exception $error){
+
+    }
+
+    $currencies = $this->user->currencies()->get();
+    return $currencies;
+}
+
 
 
 
